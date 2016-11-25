@@ -1,0 +1,137 @@
+ProductBundle\Entity\Status:
+  status_lot:
+    name: 'Duża ilość'
+    enabled: 1
+  status_middle:
+    name: 'Średnia ilość'
+    enabled: 1
+  status_few:
+    name: 'Mała ilość'
+    enabled: 1
+  status_lack:
+    name: 'Brak w magazynie'
+    enabled: 1
+  status_wait:
+    name: 'Oczekiwanie na dostawę'
+    enabled: 1
+  status_finland:
+    name: 'Wysyłka z Finlandii'
+    enabled: 1
+  status_test_{1..10}:
+    name: <word()>
+    enabled: <numberBetween(0, 1)>
+
+ProductBundle\Entity\Category:
+  category_beginners:
+    name: 'Dla początkujacych'
+    enabled: 1
+  category_soft:
+    name: 'Delikatne'
+    enabled: 1
+  category_hot:
+    name: 'Mocne'
+    enabled: 1
+  category_experts:
+    name: 'Tylko dla odważnych'
+    enabled: 1
+  category_hidden:
+    name: 'Do wykorzystania na przyszłość'
+    enabled: 0
+
+ProductBundle\Entity\NoteCategory:
+  note_category_taste:
+    name: 'Smak'
+  note_category_smell:
+    name: 'Zapach'
+  note_category_look:
+    name: 'Wygląd'
+
+ProductBundle\Entity\Product:
+  product_1:
+    name: 'Twix Salmiakki'
+    description: 'Batonik Twix o smaku salmiakki. Wspaniała przekąska na każdy zimowy poranek!'
+    statusId: '@status_lot'
+    price: 50
+    quantity: 500
+    created: <(new \DateTime('2014-02-02 13:43:12'))>
+    productCategories: ['@category_beginners', '@category_soft']
+  product_2:
+    name: 'Chilli Salmiakki'
+    description: 'Rozgrzewające i wypalające od środka!'
+    statusId: '@status_lot'
+    price: 100
+    quantity: 100
+    created: <(new \DateTime('2014-02-02 13:43:12'))>
+    productCategories: ['@category_hot']
+  product_3:
+    name: 'Finnish Salmiakki'
+    description: 'Jedyny w swoim rodzaju, niepowtarzalny smak fińskiego salmiakka!'
+    statusId: @status_middle
+    price: 28
+    quantity: 84
+    created: <(new \DateTime('2014-02-02 13:43:12'))>
+    productCategories: ['@category_soft']
+  product_4:
+    name: 'Green tea salmiakki'
+    description: 'Salmiakki aromatyzowane zieloną herbatą.'
+    statusId: '@status_wait'
+    price: 40
+    quantity: 0
+    created: <(new \DateTime('2014-02-02 13:43:12'))>
+    productCategories: ['@category_beginners', '@category_soft']
+  product_5:
+    name: 'Sweet salmiakki'
+    description: 'Jedyne na rynku, słodkie salmiakki. Tylko 2 kalorie!'
+    statusId: '@status_few'
+    price: 27
+    quantity: 2
+    created: <(new \DateTime('2014-02-02 13:43:12'))>
+    productCategories: ['@category_beginners', '@category_soft']
+  product_6:
+    name: 'Beginners salmiakki'
+    description: 'Chcesz rozpocząć swoją przygodę z salmiakki? To dobry wybór!'
+    statusId: '@status_lack'
+    price: 99
+    quantity: 0
+    created: <(new \DateTime('2014-02-02 13:43:12'))>
+    productCategories: ['@category_beginners', '@category_soft']
+  product_7:
+    name: 'Winter salmiakki'
+    description: 'W sam raz na zimę. Rozgrzewają od środka!'
+    statusId: '@status_lot'
+    price: 73
+    quantity: 1000
+    created: <(new \DateTime('2014-02-02 13:43:12'))>
+    productCategories: ['@category_hot']
+  product_8:
+    name: 'Strawberry salmiakki'
+    description: 'Lubisz truskawki? Te salmiakki są dla Ciebie'
+    statusId: '@status_few'
+    price: 15
+    quantity: 20
+    created: <(new \DateTime('2014-02-02 13:43:12'))>
+    productCategories: ['@category_soft']
+  product_9:
+    name: 'Vodka salmiakki'
+    description: 'Salmiakki aromatyzowane wódką. Tylko dla dorosłych!'
+    statusId: '@status_middle'
+    price: 45
+    quantity: 34
+    created: <(new \DateTime('2014-02-02 13:43:12'))>
+    productCategories: ['@category_hot', '@category_experts']
+  product_10:
+    name: 'Vomit salmiakki'
+    description: 'Dla tych, którzy są pewni że tego właśnie chcą...'
+    statusId: '@status_finland'
+    price: 51
+    quantity: 5
+    created: <(new \DateTime('2014-02-02 13:43:12'))>
+    productCategories: ['@category_hot', '@category_experts']
+  product_{11..100}:
+    name: <word()>
+    description: <sentence()>
+    statusId: '@status_test*'
+    price: <numberBetween(0, 100)>
+    quantity: <numberBetween(0, 1000)>
+    created: <dateTimeBetween('-365 days', 'now')>
+    productCategories: ['@category_*']

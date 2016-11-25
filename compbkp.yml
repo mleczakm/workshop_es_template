@@ -1,0 +1,9 @@
+app:
+  image: php:5.7-cli
+  ports:
+    - "8080:8080"
+  links:
+    - db
+    - elasticsearch
+  volumes:
+    - ./mysql/:/docker-entrypoint-initdb.d

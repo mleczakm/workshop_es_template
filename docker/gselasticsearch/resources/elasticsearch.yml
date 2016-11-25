@@ -1,0 +1,11 @@
+
+network.host: 0.0.0.0
+
+script.inline: true
+script.indexed: true
+script.file: true
+script.default_lang: groovy
+
+#path.conf: /etc/elasticsearch
+#path.data: /data
+#path.logs: /logs

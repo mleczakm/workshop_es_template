@@ -1,0 +1,24 @@
+status_index:
+    path:     /
+    defaults: { _controller: "ProductBundle:Status:index" }
+    methods:  GET
+
+status_show:
+    path:     /{id}/show
+    defaults: { _controller: "ProductBundle:Status:show" }
+    methods:  GET
+
+status_new:
+    path:     /new
+    defaults: { _controller: "ProductBundle:Status:new" }
+    methods:  [GET, POST]
+
+status_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ProductBundle:Status:edit" }
+    methods:  [GET, POST]
+
+status_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ProductBundle:Status:delete" }
+    methods:  DELETE

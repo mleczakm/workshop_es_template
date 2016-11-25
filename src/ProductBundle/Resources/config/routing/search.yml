@@ -1,0 +1,34 @@
+search_1:
+    path:     /test1
+    defaults: { _controller: "ProductBundle:Search:test1" }
+    methods:  GET
+
+search_2:
+    path:     /test2
+    defaults: { _controller: "ProductBundle:Search:test2" }
+    methods:  GET
+
+search_3:
+    path:     /test3
+    defaults: { _controller: "ProductBundle:Search:test3" }
+    methods:  GET
+
+search_4:
+    path:     /test4
+    defaults: { _controller: "ProductBundle:Search:test4" }
+    methods:  GET
+
+search_5:
+    path:     /test5
+    defaults: { _controller: "ProductBundle:Search:test5" }
+    methods:  GET
+
+search_6:
+    path:     /test6
+    defaults: { _controller: "ProductBundle:Search:test6" }
+    methods:  GET
+
+search_7:
+    path:     /test7
+    defaults: { _controller: "ProductBundle:Search:test7" }
+    methods:  GET

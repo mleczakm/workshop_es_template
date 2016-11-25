@@ -1,0 +1,15 @@
+product_category:
+    resource: "@ProductBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
+product_product:
+    resource: "@ProductBundle/Resources/config/routing/product.yml"
+    prefix:   /product
+
+product_status:
+    resource: "@ProductBundle/Resources/config/routing/status.yml"
+    prefix:   /status
+
+search:
+    resource: "@ProductBundle/Resources/config/routing/search.yml"
+    prefix:   /search

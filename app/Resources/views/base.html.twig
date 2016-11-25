@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+</head>
+<body>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <a href="{{ path('product_index') }}" class="top-menu">Produkty</a>
+        </td>
+        <td>
+            <a href="{{ path('category_index') }}" class="top-menu">Kategorie</a>
+        </td>
+        <td>
+            <a href="{{ path('status_index') }}" class="top-menu">Status</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

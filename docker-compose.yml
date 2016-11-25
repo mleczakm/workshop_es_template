@@ -1,0 +1,45 @@
+version: '2'
+
+services:
+  nginx:
+    build: ./docker/nginx
+    ports:
+      - "8080:80"
+    container_name: nginx
+    depends_on:
+      - db
+      - elasticsearch
+    volumes:
+      - .:/code
+    networks:
+      espeo:
+        aliases:
+          - nginx
+
+  db:
+    image: mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: symfony
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: symfony
+    networks:
+      espeo:
+        aliases:
+          - mysql
+
+  elasticsearch:
+    build: docker/gselasticsearch
+    ports:
+      - "9209:9200"
+      - "9309:9300"
+      - "5609:5601"
+    networks:
+      espeo:
+        aliases:
+          - elasticsearch
+
+networks:
+  espeo:
