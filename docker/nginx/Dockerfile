@@ -20,4 +20,6 @@ COPY run.sh /run.sh
 WORKDIR /code
 EXPOSE 80 443
 
+RUN usermod -u 1000 www-data
+
 ENTRYPOINT ["/bin/bash", "/run.sh"]
