@@ -4,11 +4,14 @@ namespace ProductBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
+
 /**
  * Product
  *
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="ProductBundle\Repository\ProductRepository")
+ * @JMS\ExclusionPolicy("all")
  */
 class Product
 {
@@ -25,6 +28,9 @@ class Product
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("string")
      */
     private $name;
 
@@ -32,6 +38,9 @@ class Product
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("string")
      */
     private $description;
 
@@ -39,6 +48,9 @@ class Product
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime")
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
      */
     private $created;
 
@@ -46,6 +58,9 @@ class Product
      * @var float
      *
      * @ORM\Column(name="price", type="float")
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("float")
      */
     private $price;
 
@@ -53,6 +68,9 @@ class Product
      * @var integer
      *
      * @ORM\Column(name="quantity", type="integer")
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("integer")
      */
     private $quantity;
 
@@ -60,6 +78,10 @@ class Product
      * @var int
      * @ORM\ManyToOne(targetEntity="Status", inversedBy="products")
      * @ORM\JoinColumn(name="status_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("ProductBundle\Entity\Status")
+
      */
     private $statusId;
 
@@ -67,12 +89,18 @@ class Product
      * @var \Doctrine\Common\Collections\ArrayCollection $productCategories
      *
      * @ORM\ManyToMany(targetEntity="ProductBundle\Entity\Category", mappedBy="products", cascade={"persist"})
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("ArrayCollection<ProductBundle\Entity\Category>")
      */
     private $productCategories;
 
     /**
      * @var ArrayCollection<ProductBundle\Entity\ProductNote>
      * @ORM\OneToMany(targetEntity="ProductNote", mappedBy="products", cascade={"persist"})
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("ArrayCollection<ProductBundle\Entity\ProductNote>")
      */
     private $notes;
 
@@ -301,6 +329,11 @@ class Product
         $this->notes->add($note);
 
         return $this;
+    }
+
+    public function shouldBeElasticSearchIndexable()
+    {
+        return $this->getQuantity() > 100;
     }
 
 }

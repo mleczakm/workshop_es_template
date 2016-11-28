@@ -4,12 +4,15 @@ namespace ProductBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
+
 
 /**
  * Status
  *
  * @ORM\Table(name="status")
  * @ORM\Entity(repositoryClass="ProductBundle\Repository\StatusRepository")
+ * @JMS\ExclusionPolicy("all")
  */
 class Status
 {
@@ -19,6 +22,9 @@ class Status
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("integer")
      */
     private $id;
 
@@ -26,6 +32,9 @@ class Status
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("string")
      */
     private $name;
 
@@ -33,6 +42,9 @@ class Status
      * @var bool
      *
      * @ORM\Column(name="enabled", type="boolean", nullable=true)
+     * @JMS\Expose
+     * @JMS\Groups({"workshop1"})
+     * @JMS\Type("boolean")
      */
     private $enabled;
 
