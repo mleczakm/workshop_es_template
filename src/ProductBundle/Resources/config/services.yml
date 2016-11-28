@@ -1,10 +1,10 @@
 services:
 
-#    elastica_search_service:
-#        class: ProductBundle\Service\SearchService
-#        arguments: ["@fos_elastica.index.workshop.shop"]
+    elastica_search_service:
+        class: ProductBundle\Service\SearchService
+        arguments: ["@fos_elastica.index.workshop.shop"]
 
-#    elastica.listener.serialization.product:
-#        class: ProductBundle\EventListener\ProductListerner
-#        tags:
-#            - {name: jms_serializer.event_subscriber}
+    elastica.listener.serialization.product:
+        class: ProductBundle\EventListener\ProductListener
+        tags:
+            - {name: jms_serializer.event_subscriber}
